@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,15 +18,29 @@ public class GameManager : MonoBehaviour
 
     #endregion Singleton
 
-
+    // VARIABLES
     public Player localPlayer;
     public Player enemyPlayer;
+    public GameObject handCardPrefab;
+    public GameObject playCardPrefab;
     [Space]
-    public List<CardLogic> discardPile = new List<CardLogic>();
+    public DiscardPile discardPile;
+    public Transform discardTarget;
+
+    // EVENTOS
+    public UnityEvent drawPhase;
+    public UnityEvent discardPhase;
+    public UnityEvent combatPhase;
+    public UnityEvent endPhase;
 
 
     private void Start() {
+        OnGameStart();
+    }
 
+    void OnGameStart(){
+        drawPhase.Invoke();
+        discardPhase.Invoke();
     }
 
     // TODO: BORRAR
@@ -42,32 +57,6 @@ public class GameManager : MonoBehaviour
 
         if(cardB.health <= 0)
             cardB.Die();
-    }
-
-    bool IsCardElegibleForDiscard(CardLogic cardA, CardLogic cardB)
-    {
-        var runeA = (int)cardA.rune;
-        var runeB = (int)cardB.rune;
-
-        var levelWin = false;
-        var runeWin = false;
-
-        // victoria por nivel
-        if(cardA.level > cardB.level)
-            levelWin = true;
-
-        // victoria por runa
-        if(runeA == 1 && runeB == 5)
-            runeWin = true;
-        else
-        if(runeA == runeB+1)
-            runeWin = true;  
-
-        // Era mejor?
-        if(runeWin || levelWin)
-            return true;
-        else
-            return false;
     }
 
     // TODO: BORRAR

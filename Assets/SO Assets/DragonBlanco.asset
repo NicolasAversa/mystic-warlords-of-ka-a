@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: DragonBlanco
   m_EditorClassIdentifier: 
   cardName: Dragon blanco de ojos azules
-  level: 1
-  rune: 1
+  level: 3
+  rune: 3
   attack: 10
   health: 20
   isWarlord: 0

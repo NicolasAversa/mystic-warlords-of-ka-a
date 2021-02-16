@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CardLogic : MonoBehaviour
 {
-    [SerializeField] CardAsset cardAsset;
+    public CardAsset cardAsset;
     [SerializeField] CardVisual visual;
     
     public int health;
@@ -29,6 +29,15 @@ public class CardLogic : MonoBehaviour
         attack = _cardAsset.attack;
         level = _cardAsset.level;
         rune = _cardAsset.rune;
+
+        visual.UpdateVisual(cardAsset);
+    }
+
+    public void ActivateForDiscard(){
+        // Encender eventos de mouse
+
+        // Brillar
+        visual.Glow();
     }
 
     public void Die()

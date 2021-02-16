@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: DragonNegro
   m_EditorClassIdentifier: 
   cardName: Dragon negro de ojos rojos
-  level: 1
-  rune: 1
+  level: 2
+  rune: 4
   attack: 5
   health: 30
   isWarlord: 0
